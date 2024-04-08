@@ -1,0 +1,74 @@
+<html>
+
+<head>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css" />
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+</head>
+
+<body>
+	<div class="fluig-style-guide">
+		<form name="form" role="form">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h2 class="panel-title"><img src="/cadastro_curso_mfx_academy/resources/images/cadastro.png"
+							alt="Cadastro" class="panel-icon"> Cadastro de Curso </h2>
+				</div>
+				<div class="panel-body">
+					<div class='row' style="margin-bottom: 5px;">
+						<div class='col-md-2'>
+							<label for='idCurso'>ID</label>
+							<input type='text' class='form-control' id='idCurso' name='idCurso' />
+						</div>
+						<div class='col-md-5'>
+							<label for='nomeCurso'>Nome do curso</label>
+							<input type='text' class='form-control' id='nomeCurso' name='nomeCurso'
+								placeholder="Full Stack" />
+						</div>
+						<div class='col-md-5'>
+							<label for='cargaHoraria'>Carga Horária</label>
+							<input type='text' class='form-control' id='cargaHoraria' name='cargaHoraria' />
+						</div>
+					</div>
+					<div class='row'>
+						<div class='col-md-6'>
+							<label for='valorCurso'>Valor do curso</label>
+							<input type='text' class='form-control' id='valorCurso' name='valorCurso' />
+						</div>
+						<div class='col-md-6'>
+							<label for='valorMatricula'>Valor da Matrícula</label>
+							<input type='text' class='form-control' id='valorMatricula' name='valorMatricula' />
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h2 class="panel-title"><img src="/cadastro_curso_mfx_academy/resources/images/cadastro.png"
+							alt="Cadastro" class="panel-icon"> Cadastro de Mensalidade </h2>
+				</div>
+				<div class="panel-body">
+					<div class='row'>
+						<div class='col-md-2'>
+							<label for="parcelas">QT de Parcelas</label>
+							<input type="number" name="parcelas" id="parcelas" class="form-control">
+						</div>
+						<div class='col-md-6'>
+							<label for="valorMensal">Valor Mensal</label>
+							<input type="text" name="valorMensal" id="valorMensal" class="form-control" readonly>
+						</div>
+						<div class='col-md-4'>
+							<label for="formaPagamento">Forma de Pagamento</label>
+							<input type="text" name="formaPagamento" id="formaPagamento" class="form-control" placeholder="Cartão de Crédito">
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+
+</html>

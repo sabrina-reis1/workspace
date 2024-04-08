@@ -1,0 +1,101 @@
+/* Coloque aqui seu codigo CSS */
+:root {
+    --green-color: #69cc76;
+    --silver-color: #cecece;
+    --green-color-button: #d4fcd3;
+}
+
+.panel-custom{
+    border: solid 1px #BBBBBB !important;
+    padding: 1vh !important;
+    border-radius: 7px !important;
+    margin-bottom: 15px;
+}
+
+.panel-head-col{
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+    margin-left: 20px;  
+}
+
+.row{
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+}
+
+.panel-icon{
+    margin-right: 5px;
+}
+
+hr {
+	border: 0;
+	border-top: 1px solid #094CFA;
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+}
+
+.cards{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: baseline;
+    flex-wrap: wrap !important;
+}
+
+.card{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+    width: 40%;
+    height: 350px;
+}
+
+.btn-custom{
+    width: 100px;
+    height: 30px;
+    padding: 8px, 24px, 8px, 24px;
+    border-radius: 8px;
+    gap: 10px;
+    background-color: #B97EDD;
+    border: none;
+    color: #ffff !important;
+}
+
+.div-img-cadastro{
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.circle {
+    width: 100px; 
+    height: 100px; 
+    border-radius: 50%; 
+    overflow: hidden; 
+    margin: 10px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F5E4FF;
+}
+  
+.circle img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+}
+
+.title-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title-card p, h3{
+    margin: 0px !important;
+}

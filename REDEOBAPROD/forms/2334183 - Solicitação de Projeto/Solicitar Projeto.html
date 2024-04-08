@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	<script src="/webdesk/vcXMLRPC.js"></script>
+	<script src="script.js" defer></script>
+	<script src="validate.js" defer></script>
+	<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div class="fluig-style-guide">
+<form name="form" role="form">
+	<input type="hidden" name="numAtividade" id="numAtividade">
+	<input type="hidden" name="login_user" id="login_user">
+	<input type="hidden" name="hd_nomeUser" id="hd_nomeUser" value="">
+	<input type="hidden" name="hd_funcaoUser" id="hd_funcaoUser" value="">
+	<input type="hidden" name="hd_userEmail" id="hd_userEmail">
+	<input type="hidden" name="nivel_aprovacao" id="nivel_aprovacao">
+	<input type="hidden" name="aprov1" id="aprov1">
+	<input type="hidden" name="aprov2" id="aprov2">
+	<input type="hidden" name="aprov3" id="aprov3">
+	<input type="hidden" name="pacoteiro" id="pacoteiro">
+	<input type="hidden" name="totalAnexos" id="totalAnexos">
+	<input type="hidden" name="hd_data_central_servico" id="hd_data_central_servico">
+	
+	<div id="painelEtapa" class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">Solicitação de projeto</h3>
+		</div>
+		<div class="panel-body">
+			<div style="width: 100%; display: flex; justify-content: center;"><h2>Etapa</h2></div>
+			<div class="progress">
+				<div id="solicitacao" class="progress-bar hide" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+					<span>Solicitação</span>
+				</div>
+				<div id="aprovacao1" class="progress-bar hide" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+					<span>Aprovação 1</span>
+				</div>
+				<div id="aprovacao2" class="progress-bar hide" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+					<span>Aprovação 2</span>
+				</div>
+				<div id="aprovacao3" class="progress-bar hide" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+					<span>Aprovação 3</span>
+				</div>
+				<div id="aprovacaoPacoteiro" class="progress-bar hide" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+					<span>Aprovação Pacoteiro</span>
+				</div>
+				<div id="revisao" class="progress-bar hide" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+					<span>Revisão</span>
+				</div>
+				<div id="projetoAprovado" class="progress-bar progress-bar-success hide" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+					<span>Solicitação de Projeto Aprovada</span>
+				</div>
+				<div id="projetoReprovado" class="progress-bar progress-bar-warning  hide" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+					<span>Solicitação de Projeto Reprovada</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="painelDadosUser" class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title"><i class="flaticon flaticon-person icon-xl" aria-hidden="true"></i> Dados do usuário</h3>
+		</div>
+		<div class="panel-body">
+			<div>
+				<div class="row">
+					<div class="col-md-3 form-group">
+						<label for="txt_chapa_solicitante">Chapa</label>
+						<input type="text" name="txt_chapa_solicitante" id="txt_chapa_solicitante" class="form-control" value="" readonly>
+					</div>
+					<div class="col-md-3 form-group">
+						<label for="txt_solicitante">Solicitante</label>
+						<input type="text" name="txt_solicitante" id="txt_solicitante" class="form-control" value="" readonly>
+					</div>
+					<div class="col-md-3 form-group">
+						<label for="txt_data_solicitacao">Data</label>
+						<input type="text" name="txt_data_solicitacao" id="txt_data_solicitacao" class="form-control" value="" readonly>
+					</div>
+					<div class="col-md-3 form-group">
+						<label for="txt_hora_solicitacao">Hora da Solicitação</label>
+						<input type="text" name="txt_hora_solicitacao" id="txt_hora_solicitacao" class="form-control" value="" readonly>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-3 form-group">
+						<label for="txt_filial_solicitante">Filial</label>
+						<input type="text" name="txt_filial_solicitante" id="txt_filial_solicitante" class="form-control" value="" readonly>
+					</div>
+					<div class="col-md-6 form-group">
+						<label for="txt_email_solicitante">Email</label>
+						<input type="text" name="txt_email_solicitante" id="txt_email_solicitante" class="form-control" value="" readonly>
+					</div>
+					<div class="col-md-3 form-group">
+						<label for="txt_funcao_solicitante">Função</label>
+						<input type="text" name="txt_funcao_solicitante" id="txt_funcao_solicitante" class="form-control" readonly>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="painelInformacoes" class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title"><i class="flaticon flaticon-form-list icon-xl" aria-hidden="true"></i> Informações central de serviços</h3>
+		</div>
+		<div class="panel-body">
+			<div>
+				<div class="row">
+					<div class="col-md-6 form-group">
+						<label for="txt_tipo_atendimento">Tipo de Atendimento</label>
+						<input type="text" name="txt_tipo_atendimento" id="txt_tipo_atendimento" class="form-control" value="" readonly>
+					</div>
+					<div class="col-md-6 form-group">
+						<label for="txt_tarefa">Tarefa</label>
+						<input type="text" name="txt_tarefa" id="txt_tarefa" class="form-control" value="" readonly>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-6 form-group">
+						<label for="txta_tarefa_descricao">Descrição</label>
+						<textarea name="txta_tarefa_descricao" id="txta_tarefa_descricao" rows="4" class="form-control" readonly></textarea>
+					</div>
+					<div class="col-md-3 form-group">
+						<label for="txt_numero_solic">Número da Solicitação</label>
+						<input type="text" name="txt_numero_solic" id="txt_numero_solic" class="form-control" value="" readonly>
+					</div>
+					<div class="col-md-3 form-group">
+						<label for="txt_data_solic">Data Solicitação - Central de Serviços</label>
+						<input type="date" name="txt_data_solic" id="txt_data_solic" class="form-control" value="" readonly>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<div id="painelDadosSolicitacao" class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title"><i class="flaticon flaticon-person icon-xl" aria-hidden="true"></i> Dados da Solicitação</h3>
+		</div>
+		<div class="panel-body">
+			<div>
+				<div class="row">
+					<div class="col-md-4 form-group">
+						<label for="txt_opex_capex">Opex ou Capex</label>
+						<select name="txt_opex_capex" id="txt_opex_capex" class="form-control">
+							<option value="Capex">Capex</option>
+							<option value="Opex">Opex</option>
+						</select>
+					</div>
+					<div class="col-md-4 form-group">
+						<label for="txt_orcamento">Orçamento</label>
+						<input type="text" name="txt_orcamento" id="txt_orcamento" class="form-control">
+					</div>
+					<div class="col-md-4 form-group">
+						<label for="txt_num_contrato">Contrato</label>
+						<input type="text" name="txt_num_contrato" id="txt_num_contrato" class="form-control">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4 form-group">
+						<label for="txt_centro_custo">Centro de Custo</label>
+						<input
+							type="zoom"
+							id = "txt_centro_custo"
+							name="txt_centro_custo"
+							data-zoom="{
+								'displayKey':'FILTRO',
+								'datasetId':'dts_CCustoPagNotas_MFX',
+								'maximumSelectionLength':'1',
+								'placeholder':'Escolha o centro de custo',
+								'fields':[
+									{
+										'field':'FILTRO',
+										'label':'Centro de Custo'
+									},
+									{
+										'field':'CENTROCUSTO',
+										'label':'Centro de Custo',
+										'visible': 'false'
+									}
+								]
+							}"
+						/>
+					</div>
+					<div class="col-md-4 form-group">
+						<label for="txt_natureza_operacao">Natureza da Operação</label>
+						<input
+							type="zoom"
+							id = "txt_natureza_operacao"
+							name="txt_natureza_operacao"
+							data-zoom="{
+								'displayKey':'CODDESC',
+								'datasetId':'dts_getNaturezaDespesa_MFX',
+								'maximumSelectionLength':'1',
+								'placeholder':'Escolha o centro de custo',
+								'fields':[
+									{
+									'field':'CODDESC',
+									'label':'Descrição'
+									}
+								]
+							}"
+						/>
+					</div>
+					<div class="col-md-4 form-group">
+						<label for="txt_nome_servico">Nome do Serviço</label>
+						<input type="text" name="txt_nome_servico" id="txt_nome_servico" class="form-control">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6 form-group">
+						<label for="txt_valor_solicitacao">Valor</label>
+						<input type="text" name="txt_valor_solicitacao" id="txt_valor_solicitacao" class="form-control" mask=" #00000000000000000,00">
+					</div>
+					<div class="col-md-6 form-group">
+						<label for="txt_tamanho_projeto">Tamanho do Projeto</label>
+						<select name="txt_tamanho_projeto" id="txt_tamanho_projeto" class="form-control">
+							<option value="pequeno">Pequeno</option>
+							<option value="medio">Médio</option>
+							<option value="grande">Grande</option>
+						</select>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 form-group">
+						<label for="txt_justificativa">Justificativa</label>
+						<textarea name="txt_justificativa" id="txt_justificativa" rows="5" class="form-control"></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="painelAnexo" class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title"><i class="flaticon flaticon-paperclip icon-xl" aria-hidden="true"></i>Inserir Anexo</h3>
+		</div>
+		<div class="panel-body">
+			<div>
+				<table id="tabelaAnexos" tablename="tbAnexos" class="table table-hover" noaddbutton="true" nodeletebutton="true">
+					<thead id="cabecalhoTabelaAnexos">
+						<tr>
+							<td></td>
+							<td class="col-md-4"></td>
+							<td></td>
+							<td></td>
+							<td class="col-md-8">Descrição do arquivo</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="removeButtonTable" style="width: 80px;"><button onclick="removeAnexoButton(this)"  style="border-radius: 6px; border: 1px solid #d4d4d4; background: #cbcbcb;"><i class="flaticon flaticon-trash icon-md" aria-hidden="true"></i></button></td>
+							<td>
+								<button class="col-md-12 btnAnexo" type="button" id="btn_add_anexo" onclick="anexarArquivo(this)">Inserir Anexo</button>
+							</td>
+							<td>
+								<button class="col-md-12 btnRemoveAnexo" type="button" id="btn_remove_anexo" onclick="removeAnexo(this)">Remove Anexo</button>
+							</td>
+							<td>
+								<button class="col-md-12 btnDownloadAnexo" type="button" id="btn_download_anexo" onclick="anexoDownload(this)">Download</button>					
+							</td>
+							<input type="hidden" name="nome_arquivo_anexo" id="nome_arquivo_anexo">
+							<td><input class="col-md-12" type="text" name="txt_descricao_arquivo" id="txt_descricao_arquivo" class="form-control"></td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="row" id="btnAddAnexo">
+					<div class="col-md-12" style="display: flex; justify-content: flex-start;">
+						<button class="btn btn-info"id="btnAddAnexo" onclick="addAnexo()" style="display: flex; justify-content: center; align-items: center;"><i class="flaticon flaticon-add-plus icon-sm" aria-hidden="true" style="margin-right: 10px;"></i>Novo</button>
+					</div>
+				</div>
+			</div>
+			<div  id="tabelaAnexosGerente">
+				<table id="tbAnexosGerente" tablename="tbAnexosGerente" class="table table-hover" noaddbutton="true" nodeletebutton="true">
+					<thead id="cabecalhoTabelaAnexosGerente">
+						<tr>
+							<td></td>
+							<td class="col-md-4"></td>
+							<td></td>
+							<td></td>
+							<td class="col-md-8"></td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="removeButtonTableGerente" style="width: 80px;"><button onclick="removeAnexoButton(this)"  style="border-radius: 6px; border: 1px solid #d4d4d4; background: #cbcbcb;"><i class="flaticon flaticon-trash icon-md" aria-hidden="true"></i></button></td>
+							<td>
+								<button class="col-md-12 btnAnexoGerente" type="button" id="btn_add_anexo" onclick="anexarArquivo(this, 'gerente')">Inserir Anexo</button>
+							</td>
+							<td>
+								<button class="col-md-12 btnRemoveAnexoGerente" type="button" id="btn_remove_anexo" onclick="removeAnexo(this, 'gerente')">Remove Anexo</button>
+							</td>
+							<td>
+								<button class="col-md-12 btnDownloadAnexoGerente" type="button" id="btn_download_anexo" onclick="anexoDownload(this, 'gerente')">Download</button>					
+							</td>
+							<input type="hidden" name="nome_arquivo_anexo_gerente" id="nome_arquivo_anexo_gerente">
+							<td><input class="col-md-12" type="text" name="txt_descricao_arquivo_gerente" id="txt_descricao_arquivo_gerente" class="form-control"></td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<div class="row" id="btnAddAnexoGerente">
+					<div class="col-md-12" style="display: flex; justify-content: flex-start;">
+						<button class="btn btn-info" onclick="addAnexo('gerente')" style="display: flex; justify-content: center; align-items: center;"><i class="flaticon flaticon-add-plus icon-sm" aria-hidden="true" style="margin-right: 10px;"></i>Novo</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="painelChat" class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title"><i class="flaticon flaticon-documents icon-xl" aria-hidden="true"></i> Observações</h3>
+		</div>
+		<div class="panel-body" style="display: flex; justify-content: center;">
+			<div style="width: 90%;">
+				<table class="table table-hover col-md-12" id="tbChat" tablename="tbChat" noaddbutton="true" nodeletebutton="true">
+					<thead style="display: none">
+						<tr>
+							<th></th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr id="linhaChat" class="col-md-12">
+							<td class="col-md-1" class="colHist">
+								<div class="div-fotoUser">
+									<img src="" alt="Foto do Usuario" class="img-fotoChat" id="img_fotoChat">
+									<input type="hidden" name="srcFoto" id="srcFoto">
+								</div>
+								<div class="div_nomeUser">
+									<h4 class="titleName"></h4>
+									<input type="hidden" name="valueTitleNome" id="valueTitleNome">
+									<span class="roleName"></span>
+									<input type="hidden" name="valueSpanFuncao" id="valueSpanFuncao">
+								</div>
+							</td>
+							<td class="col-md-10">
+								<span class="data_hora"></span>
+								<textarea name="txt_chat" class="form-control" id="txt_chat" cols="30" rows="4" placeholder="Observações*"></textarea>
+								<input type="hidden" name="valueSpanDate" id="valueSpanDate">
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+		</div>
+	</div>
+	<div id="painelObservacoes" class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title"><i class="flaticon flaticon-documents icon-xl" aria-hidden="true"></i> Observações</h3>
+		</div>
+		<div class="panel-body">
+			<div class="row">
+				<textarea class="col-md-12 form-control" name="txt_observacoes" id="txt_observacoes" cols="30" rows="4"></textarea>
+			</div>
+		</div>
+	</div>
+	<div id="painelAprovacao" class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title"><i class="flaticon flaticon-paperclip icon-xl" aria-hidden="true"></i>Aprovação</h3>
+		</div>
+		<div class="panel-body" style="display: flex; justify-content: center; ">
+			<div class="col-md-6 btnAprovacao" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+				<p><strong>Deseja aprovar a solicitação do projeto?</strong></p>
+				<div>
+					<button type="button" class="btn btn-success btn-lg" onclick="salvaRespostaAprovador('sim')">Sim</button> 
+					<button type="button" class="btn btn-danger btn-lg" onclick="salvaRespostaAprovador('nao')">Não</button>
+					<button type="button" class="btn btn-warning btn-lg" onclick="salvaRespostaAprovador('revisar')" id="btnAprovacaoRevisao">Revisar</button>
+					<input type="hidden" name="aprovacaoResposta" id="aprovacaoResposta">
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="txt_obs_aprovador">Observações</label>
+					<textarea name="txt_obs_aprovador" id="txt_obs_aprovador" cols="30" rows="4" class="form-control"></textarea>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</form>
+</div>
+</body>
+</html>

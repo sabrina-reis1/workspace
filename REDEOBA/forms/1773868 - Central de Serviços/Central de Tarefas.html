@@ -1,0 +1,608 @@
+<html>
+
+<head>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css" />
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" type="text/css" href="/style-guide/css/fluig-style-guide-ratingstars.min.css">
+	<script src="/style-guide/js/fluig-style-guide-ratingstars.min.js"></script>
+</head>
+
+<body>
+	<div class="fluig-style-guide">
+		<div class="row">
+			<div class="col-md-12">
+				<h1 style="color: #46C243;" id="solicitacao">Solicitação</h1>
+				<h1 style="color: #46C243;" id="classificacao">Classificação</h1>
+				<h1 style="color: #46C243;" id="suporte">Suporte</h1>
+				<h1 style="color: #46C243;" id="avaliacao">Avaliação</h1>
+			</div>
+		</div>
+
+		<form name="form" role="form">
+
+			<input type="hidden" name="hd_papel_classifica" id="hd_papel_classifica">
+			<!-- <input type="hidden" name="hd_papel_analista" id="hd_papel_analista"> -->
+			<input type="hidden" name="hd_matricula_analista" id="hd_matricula_analista">
+			<!-- Hidden para transferência de solicitação -->
+			<input type="hidden" name="hd_transfere_solic" id="hd_transfere_solic">
+			<input type="hidden" name="hd_mat_analista_transf" id="hd_mat_analista_transf">
+			<input type="hidden" name="hd_nivel_atual" id="hd_nivel_atual">
+			<input type="hidden" name="hd_tpAtendimento_atual" id="hd_tpAtendimento_atual">
+			<input type="hidden" name="hd_dta_entrada" id="hd_dta_entrada">
+			<input type="hidden" name="hd_classificacao_transf" id="hd_classificacao_transf">
+			<input type="hidden" name="hd_gestao_transf" id="hd_gestao_transf">
+			<!-- Hidden para transferência de solicitação -->
+			<input type="hidden" name="hd_avaliacao_atendimento" id="hd_avaliacao_atendimento">
+			<input type="hidden" name="hd_cod_processo" id="hd_cod_processo">
+			<input type="hidden" name="hd_cod_atividade" id="hd_cod_atividade">
+			<input type="hidden" name="hd_email_analista" id="hd_email_analista">
+			<input type="hidden" name="hd_prazo_conclusao" id="hd_prazo_conclusao">
+			<input type="hidden" name="hd_sla" id="hd_sla">
+			<input type="hidden" name="hd_data_sla" id="hd_data_sla">
+			<input type="hidden" name="hd_novo_sla" id="hd_novo_sla">
+			<input type="hidden" name="hd_tempo_sla" id="hd_tempo_sla">
+			<input type="hidden" name="hd_sla_total" id="hd_sla_total">
+			<input type="hidden" name="hd_data" id="hd_data">
+			<input type="hidden" name="hd_mat_solic" id="hd_mat_solic">
+			<input type="hidden" name="hd_login_solic" id="hd_login_solic">
+			<input type="hidden" name="hd_data_solicitacao" id="hd_data_solicitacao">
+			<input type="hidden" name="hd_fim_solicitacao" id="hd_fim_solicitacao">
+			<input type="hidden" name="hd_cod_tipoAtendimento" id="hd_cod_tipoAtendimento">
+			<input type="hidden" name="hd_cod_categoria" id="hd_cod_categoria">
+			<input type="hidden" name="hd_cod_gestorCateg" id="hd_cod_gestorCateg">
+			<input type="hidden" name="hd_solic_salva" id="hd_solic_salva" value="nao">
+			<input type="hidden" name="hd_valida_classificacao" id="hd_valida_classificacao">
+			<input type="hidden" name="hd_cod_evento" id="hd_cod_evento">
+
+			<div class="panel panel-default">
+				<div class="panel-heading new-panel">
+					<h2 class="panel-title" style="font-size: 1.4rem;"><img src="img/tarefa 1.png" alt=""> Central de Serviços
+					</h2>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-12 form-group">
+							<h2 style="text-align: center;">Etapa</h2>
+							<div class="progress" style="box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);">
+								<div class="progress-bar progress-bar-warning" style="width: 25%" id="inicio-warning">
+									<span style="font-weight: 500;">Inicio</span>
+								</div>
+								<div class="progress-bar progress-bar-success" style="width: 25%" id="inicio-success">
+									<span style="font-weight: 500;">Inicio</span>
+								</div>
+								<div class="progress-bar progress-bar-warning progress-bar"
+									style="width: 25%; " id="classificacao-warning">
+									<span style="font-weight: 500;">Classificação</span>
+								</div>
+								<div class="progress-bar progress-bar-success progress-bar"
+									style="width: 25%; " id="classificacao-success">
+									<span style="font-weight: 500;">Classificação</span>
+								</div>
+								<div class="progress-bar progress-bar-warning"
+									style="width: 25%; width: 25%; " id="suporte-warning">
+									<span style="font-weight: 500;">Suporte</span>
+								</div>
+								<div class="progress-bar progress-bar-success"
+									style="width: 25%; width: 25%; " id="suporte-success">
+									<span style="font-weight: 500;">Suporte</span>
+								</div>
+								<div class="progress-bar progress-bar-warning"
+									style="width: 25%; width: 25%; " id="avaliacao-warning">
+									<span style="font-weight: 500;">Avaliação</span>
+								</div>
+								<div class="progress-bar progress-bar-success"
+									style="width: 25%; width: 25%; " id="avaliacao-success">
+									<span style="font-weight: 500;">Avaliação</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row" id="dias_abertos">
+						<div class="col-md-12 col-sm-12 col-xs-12 align">
+							<div class="content">
+								<img src="img/simbolo-de-ferramentas-de-organizacao-e-administracao-de-horario-de-calendario-e-relogio 2.png"
+									style="width: 50px;" alt="">
+							</div>
+							<div class="contain">
+								<span style="font-size: 1.1rem; font-weight: 700; color: #000;" id="title-days">Tempo em aberto</span>
+								<div class="red-content">
+									<span id='conta_dias'></span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="panel panel-default">
+				<div class="panel-heading new-panel">
+					<h2 class="panel-title" style="font-size: 1.4rem;"><img src="img/Vector.png" alt=""> Dados do
+						usuário</h2>
+				</div>
+				<div class="panel-body">
+					<div class="row" style="margin-top: 30px;">
+						<div class="col-md-4 form-group">
+							<label for="txt_tarefa_chapa">Chapa</label>
+							<input type="text" id="txt_tarefa_chapa" name="txt_tarefa_chapa"
+								class="form-control input-shadow" readonly>
+						</div>
+						<div class="col-md-4 form-group">
+							<label for="txt_tarefa_nome">Nome</label>
+							<input type="text" class="form-control input-shadow" name="txt_tarefa_nome"
+								id="txt_tarefa_nome" readonly>
+						</div>
+						<div class="col-md-4 form-group">
+							<label for="txt_tarefa_funcao">Função</label>
+							<input type="text" class="form-control input-shadow" name="txt_tarefa_funcao"
+								id="txt_tarefa_funcao" readonly>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4 form-group">
+							<!--<label for="txt_tarefa_secao">Seção</label> -->
+							<input type="hidden" name="txt_tarefa_secao" id="txt_tarefa_secao"
+								class="form-control input-shadow" readonly>
+
+							<label for="txt_tarefa_filial">Filial</label>
+							<input type="text" name="txt_tarefa_filial" id="txt_tarefa_filial" class="form-control input-shadow" readonly>
+						</div>
+						<div class="col-md-8 form-group">
+							<label for="txt_tarefa_email">Email</label>
+							<input type="text" name="txt_tarefa_email" id="txt_tarefa_email"
+								class="form-control input-shadow" readonly>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12" style="display: flex; flex-direction: column;">
+							<label for="swt_tarefa_outroFunc">Solicitação para outro funcionário</label>
+							<input id="swt_tarefa_outroFunc" name="swt_tarefa_outroFunc" type="checkbox"
+								data-on-color="success" onchange="apresentaCampos(this)">
+						</div>
+					</div>
+					<div class="row new_solic">
+						<div class="col-md-4 form-group">
+							<label for="ztxt_tarefa_chapaFunc">Chapa do Funcionário</label>
+							<input class="form-control input-shadow zoom-style" type="zoom" id="ztxt_tarefa_chapaFunc"
+								name="ztxt_tarefa_chapaFunc" data-zoom="{
+								'displayKey':'FUNCIONARIO',
+								'datasetId':'dts_consultaFluigFunc',
+								'placeholder':'Escolha a chapa do solicitante',
+								'fields':[
+									{
+									'field':'FUNCIONARIO',
+									'label':'Dados do solicitante',
+									'standard': 'true'
+									}
+								]
+							}" />
+						</div>
+						<div class="col-md-4 form-group">
+							<label for="txt_tarefa_nomeFunc">Nome</label>
+							<input type="text" class="form-control input-shadow" name="txt_tarefa_nomeFunc"
+								id="txt_tarefa_nomeFunc" readonly>
+						</div>
+						<div class="col-md-4 form-group">
+							<label for="txt_tarefa_funcaoFunc">Função</label>
+							<input type="text" class="form-control input-shadow" name="txt_tarefa_funcaoFunc"
+								id="txt_tarefa_funcaoFunc" readonly>
+						</div>
+					</div>
+					<div class="row new_solic">
+						<div class="col-md-4 form-group">
+							<label for="txt_tarefa_secaoFunc">Seção</label>
+							<input type="text" name="txt_tarefa_secaoFunc" id="txt_tarefa_secaoFunc"
+								class="form-control input-shadow" readonly>
+						</div>
+						<div class="col-md-4 form-group">
+							<label for="txt_tarefa_emailFunc">Email</label>
+							<input type="text" name="txt_tarefa_emailFunc" id="txt_tarefa_emailFunc"
+								class="form-control input-shadow" readonly>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="panel panel-default">
+				<div class="panel-heading new-panel">
+					<h2 class="panel-title" style="font-size: 1.4rem;"><img src="img/conector.png" alt=""> Dados da
+						solicitação</h2>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-2 form-group">
+							<label for="txt_tarefa_data">Data solicitação</label>
+							<input type="text" name="txt_tarefa_data" id="txt_tarefa_data"
+								class="form-control input-shadow " readonly>
+							<input type="hidden" name="hd_data_solic" id="hd_data_solic">
+						</div>
+						<div class="col-md-3 form-group">
+							<label for="ztxt_tarefa_categoria">Categoria</label>
+							<input class="form-control input-shadow zoom-style" type="zoom" id="ztxt_tarefa_categoria"
+								name="ztxt_tarefa_categoria" data-zoom="{
+									'displayKey':'CATEGORIA',
+									'datasetId':'dts_consultaCategoriaMFX',
+									'placeholder':'Escolha a Categoria',
+									'fields':[
+										{
+										'field':'TXT_CATEGORIA',
+										'label':'Categoria'
+										},
+										{'field': 'CATEGORIA', 'label': 'CATEGORIA', 'visible': 'false'}
+									]
+								}" />
+						</div>
+						<div class="col-md-3 form-group" id="col_atendimento">
+							<label for="ztxt_tarefa_tipoAtend">Tipo de Atendimento</label>
+							<input class="form-control input-shadow zoom-style " type="zoom" id="ztxt_tarefa_tipoAtend"
+								name="ztxt_tarefa_tipoAtend" data-zoom="{
+                                    'displayKey':'TIPO_ATENDIMENTO',
+                                    'datasetId':'dts_consultaTpAtendMFX',
+                                    'placeholder':'Escolha o tipo de atendimento',
+                                    'fields':[
+                                        {
+                                        'field':'TIPO_ATENDIMENTO',
+                                        'label':'Tipo de Atendimento'
+                                        }
+                                    ]
+                                }" />
+						</div>
+						<div class="col-md-2 form-group" id="col_tarefa">
+							<label for="ztxt_tarefa_slTarefa">Selecione sua tarefa</label>
+							<input class="form-control input-shadow zoom-style " type="zoom" id="ztxt_tarefa_slTarefa"
+								name="ztxt_tarefa_slTarefa" data-zoom="{
+								'displayKey':'TXT_TAREFA',
+								'datasetId':'dts_consultaTarefasMFX',
+								'placeholder':'Escolha a tarefa',
+								'fields':[
+								{
+									'field':'TXT_TAREFA',
+									'label':'Tarefa'
+								}
+								]
+							}" />
+						</div>
+						<div class="col-md-2 form-group" id="col_tiposolic">
+							<label for="txt_tarefa_tiposolic">Tipo de Solicitação</label>
+							<input type="text" name="txt_tarefa_tiposolic" id="txt_tarefa_tiposolic"
+								class="form-control input-shadow " readonly>
+						</div>
+					</div>
+
+					<div class="row" id="dados_solic">
+						<div class="col-md-2 form-group">
+							<label for="txt_tarefa_numSolic">Número da Solicitação</label>
+							<input type="text" name="txt_tarefa_numSolic" id="txt_tarefa_numSolic" class="form-control" readonly>
+						</div>
+						
+						<div class="col-md-3 form-group" style="display: none;"> <!-- Chamado: ##1533409-->
+							<label for="sl_tarefa_tpSolic">Tipo de Solicitação</label>
+							<select name="sl_tarefa_tpSolic" id="sl_tarefa_tpSolic" class="form-control hide"> <!-- Chamado: ##1533409-->
+								<option value="" selected>-- Selecione --</option>
+								<option value="incidente">Incidente</option>
+								<option value="melhoria">Melhoria</option>
+								<option value="requisicao_investimento">Requisição de Serviço</option>
+							</select>
+						</div>
+						<div class="col-md-3 form-group">
+							<label for="ztxt_tarefa_nivel">Grupo de Atendimento</label>
+							<input class="form-control input-shadow zoom-style " type="zoom" id="ztxt_tarefa_nivel"
+								name="ztxt_tarefa_nivel" data-zoom="{
+                                    'displayKey':'TXT_GRUPO_NIVEL',
+                                    'datasetId':'dts_consultaNiveisSLAMFX',
+                                    'placeholder':'Escolha o usuário',
+                                    'fields':[
+                                        {
+                                        'field':'TXT_GRUPO_NIVEL',
+                                        'label':'Grupo do Nível',
+										'standard':'true'
+                                        }
+                                    ]
+                                }" />
+								
+								<input type="hidden" name="hd_dta_saida" id="hd_dta_saida">
+								<input type="hidden" name="hd_sla_rest" id="hd_sla_rest">
+								<input type="hidden" name="hd_sla_nivel" id="hd_sla_nivel">
+								<input type="hidden" name="hd_tempoCorrido_nivel" id="hd_tempoCorrido_nivel" class="form-control">
+						</div>
+						<div class="col-md-4 form-group">
+							<label for="ztxt_tarefa_analista">Analista</label>
+							<input class="form-control input-shadow zoom-style " type="zoom" id="ztxt_tarefa_analista"
+								name="ztxt_tarefa_analista" data-zoom="{
+                                    'displayKey':'NOME',
+                                    'datasetId':'dts_analistaTarefaMFX',
+                                    'placeholder':'Escolha o usuário',
+                                    'fields':[
+                                        {
+                                        'field':'NOME',
+                                        'label':'Nome',
+										'standard':'true'
+                                        }
+                                    ]
+                                }" />
+						</div>
+					</div>
+
+					<div class="row" id="prioridade">
+						<div class="col-md-5">
+							<label for="sl_tarefa_status">Status</label>
+							<select name="sl_tarefa_status" id="sl_tarefa_status" class="form-control ">
+								<option value="select" disabled selected>-- Selecione --</option>
+								<option value="1">Não Iniciado</option>
+								<option value="2">Aguardando Terceiros</option>
+								<option value="3">Em andamento</option>
+								<option value="4">Congelado</option>
+								<option value="5">Atendido</option>
+							</select>
+						</div>
+						<div class="col-md-3">
+							<label for="sl_tarefa_prioridade">Prioridade</label>
+							<select name="sl_tarefa_prioridade" id="sl_tarefa_prioridade" class="form-control ">
+								<option value="" disabled selected>-- Selecione --</option>
+								<option value="alta">Alta</option>
+								<option value="media">Média</option>
+								<option value="baixa">Baixa</option>
+							</select>
+						</div>
+
+						<div class="col-md-4 form-group" id="prox_atividade">
+							<label for="sl_tarefa_proxAtividade">Próxima atividade</label>
+
+							<select name="sl_tarefa_proxAtividade" id="sl_tarefa_proxAtividade" class="form-control "
+								onchange="proxAtividade()">
+								<option value="select" selected>-- Selecione --</option>
+								<option value="retorno_solic">Aguardando Validação do Solicitante</option>
+								<option value="suporte">Transferir solicitação (Análise do suporte)</option>
+								<option value="avalia_atendimento">Avaliação de Atendimento</option>
+								<option value="solicita_projeto">Solicitação de Projeto</option>
+							</select>
+							<input type="hidden" name="hd_indice_chat" id="hd_indice_chat">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-default transfere_solic" style="display: none;">
+				<div class="panel-heading new-panel">
+					<h2 class="panel-title" style="font-size: 1.4rem;">Transferência de Solicitação</h2>
+				</div>
+				<div class="panel-body">
+					<div class="table-responsive">
+						<div style="min-width: 2100px;">
+							<table tablename="transferir_solic" class="table table-hover" id="transferir_solic"
+								noaddbutton="true" nodeletebutton="true">
+								<thead>
+									<tr>
+										<th style="width: 3%"></th>
+										<th style="width: 15%;">Nova Categoria</th>
+										<th style="width: 15%;">Novo Tipo de Atendimento</th>
+										<th style="width: 15%;">Selecione nova Tarefa</th>
+										<th style="width: 10%;">Novo Tipo de Solicitação</th>
+										<th style="width: 10%;">Novo Grupo</th>
+										<th style="width: 15%;">Novo Analista</th>
+										<th style="width: 17%;">Detalhe da Transferência</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td><div id="del_inclui_documentos" onclick="deleteLinha(this)"><span style="color: rgb(92, 92, 92);" class="fluigicon fluigicon-trash fluigicon-md botao_remove"></span></div></td>
+										<td>
+											<input class="form-control input-shadow zoom-style" type="zoom"
+												id="ztxt_tarefa_novoCateg" name="ztxt_tarefa_novoCateg" data-zoom="{
+													'displayKey':'CATEGORIA',
+													'datasetId':'dts_consultaCategoriaMFX',
+													'placeholder':'Escolha a Categoria',
+													'fields':[
+														{
+														'field':'TXT_CATEGORIA',
+														'label':'Categoria'
+														},
+														{'field': 'CATEGORIA', 'label': 'CATEGORIA', 'visible': 'false'}
+													]
+												}" />
+										</td>
+										<td>
+											<input class="form-control input-shadow zoom-style" type="zoom"
+												id="ztxt_tarefa_novotp" name="ztxt_tarefa_novotp" data-zoom="{
+													'displayKey':'TIPO_ATENDIMENTO',
+													'datasetId':'dts_consultaTpAtendMFX',
+													'placeholder':'Escolha o tipo de atendimento',
+													'fields':[
+														{
+														'field':'TIPO_ATENDIMENTO',
+														'label':'Tipo de Atendimento'
+														}
+													]
+												}" />
+												<input type="hidden" name="transId_categoria" id="transId_categoria">
+										</td>
+										<td>
+											<input class="form-control input-shadow zoom-style" type="zoom"
+												id="ztxt_tarefa_novaTarefa" name="ztxt_tarefa_novaTarefa" data-zoom="{
+													'displayKey':'TXT_TAREFA',
+													'datasetId':'dts_consultaTarefasMFX',
+													'placeholder':'Escolha a tarefa',
+													'fields':[
+													{
+														'field':'TXT_TAREFA',
+														'label':'Tarefa'
+													}
+													]
+												}" />
+										</td>
+										<td>
+											<input type="text" name="txt_tarefa_ntiposolic" id="txt_tarefa_ntiposolic"
+												class="form-control input-shadow" readonly>
+										</td>
+										<td>
+											<input class="form-control input-shadow zoom-style" type="zoom"
+												id="ztxt_tarefa_novoNiv" name="ztxt_tarefa_novoNiv" data-zoom="{
+														'displayKey':'TXT_GRUPO_NIVEL',
+														'datasetId':'dts_consultaNiveisSLAMFX',
+														'placeholder':'Escolha o usuário',
+														'fields':[
+															{
+															'field':'TXT_GRUPO_NIVEL',
+															'label':'Grupo do Nível',
+															'standard':'true'
+															}
+														]
+													}" />
+											<input type="hidden" name="txt_index_chat" id="txt_index_chat">
+											<input type="hidden" name="hd_resta_sla" id="hd_resta_sla" class="form-control">
+											<input type="hidden" name="hd_sla_selecionado" id="hd_sla_selecionado" class="form-control">
+											<input type="hidden" name="hd_tempo_corrido" id="hd_tempo_corrido" class="form-control">
+										</td>
+										<td>
+											<input class="form-control input-shadow zoom-style" type="zoom"
+												id="ztxt_tarefa_transfSolic" name="ztxt_tarefa_transfSolic" data-zoom="{
+													'displayKey':'NOME',
+													'datasetId':'dts_analistaTarefaMFX',
+													'placeholder':'Escolha o usuário',
+													'fields':[
+														{
+														'field':'NOME',
+														'label':'Nome',
+														'standard':'true'
+														}
+													]
+												}" />
+										</td>
+										<td>
+											<textarea rows="3" name="txta_tarefa_detalhetr" id="txta_tarefa_detalhetr"
+												class="form-control"></textarea>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+					<div class="row" id="btn_transfere">
+						<div class="col-md-12" style="display: flex; justify-content: flex-end;">
+							<button type="button" class="btn btn-oba-orange"
+								onclick="transfereSolic('transferir_solic')">Transfere Solicitação</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading new-panel">
+					<h2 class="panel-title" style="font-size: 1.4rem;"><img src="img/lista 1.png" alt=""> Detalhes
+					</h2>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-12 form-group">
+							<label for="txta_tarefa_detalhe">Detalhamento da solicitação</label>
+							<textarea rows="5" name="txta_tarefa_detalhe" id="txta_tarefa_detalhe"
+								class="form-control"></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-default" id="row_chat">
+				<div class="panel-heading new-panel">
+					<h2 style="font-size: 1.4rem" class="panel-title"><img src="img/bubble-chat 1.png" alt=""> Chat
+					</h2>
+				</div>
+				<div class="panel-body">
+					<table tablename="chat" class="table table-hover" id="chat" nodeletebutton="true"
+						noaddbutton="true">
+						<thead>
+							<tr>
+								<th>Descreva sua ação na tarefa</th>
+								<th id="th_infoUser" style="width: 15%;"></th>
+								<th style="width: 15%;"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr id="row_chat">
+								<td>
+									<div id="hora_envio_mensagem">
+										<span id="hora_envio" style="font-style: italic; margin-top: 8px;"></span>
+										<input type="hidden" name="hd_hora_envio" id="hd_hora_envio">
+									</div>
+									<div id="chat_solicitacao">
+										<textarea name="txta_tarefa_chat" id="txta_tarefa_chat" rows="5"
+											class="form-control"></textarea>
+										<input type="hidden" name="hd_index_chat" id="hd_index_chat">
+									</div>
+								</td>
+								<td style="text-align: center;" id="td_infoUser">
+									<div class="content-user" style="margin-top: 25px;">
+										<div class="foto_user">
+											<img src="" id="foto_usuario" alt="" class="estiliza-img" style="border: 1px solid #46C243">
+											<input type="hidden" name="hd_email_usuario" id="hd_email_usuario">
+										</div>
+										<div class="nome_user">
+											<h6 id="nome_usuario"></h6>
+											<input type="hidden" name="hd_nome_usuario" id="hd_nome_usuario">
+										</div>
+									</div>
+								</td>
+								<td style="padding-top: 70px;">
+									<div class="salva_chat">
+										<img src="img/Group 25.png" alt=""
+											style="width: 130px; cursor: pointer; display: none;" id="btn_salvar"
+											onclick='salvaChat(this.id, "salvar")'>
+									</div>
+									<div class="editar_chat">
+										<img src="img/Group 25 (1).png" alt=""
+											style="width: 130px; display: none; cursor: pointer;" id="btn_editar"
+											onclick='editaChat(this.id)'>
+									</div>
+									<div class="envia_solic_chat">
+										<button id="btn_envia_solic_suporte" class="btn btn-oba" onclick="salvaChat(this.id, 'enviar')" style="display: none;">Enviar Solicitação</button>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="row" id="row_inicia_conversa">
+						<div class="col-md-12" style="display: flex; justify-content: flex-end;">
+							<button type="button" class="btn btn-oba" id="inicio_conversa"
+								onclick="iniciarConversa('chat')">Envie sua
+								mensagem</button>
+						</div>
+						<input type="hidden" name="hd_valida_chat" id="hd_valida_chat">
+					</div>
+				</div>
+			</div>
+
+			<div class="panel panel-default" id="row_avaliacao">
+				<div class="panel-heading new-panel">
+					<h2 style="font-size: 1.4rem" class="panel-title"><img src="img/branding (1) 1.png" alt="">
+						Avaliação de atendimento</h2>
+				</div>
+				<div class="panel-body">
+					<div class="row" style="text-align: center;">
+						<h2>Como você avalia o atendimento prestado?</h2>
+						<div id="rt_tarefa_avalia" onchange="estrelaAvalia()"></div>
+						<div class="img" style="margin-top: 20px">
+							<img src="img/pessimo.png" alt="" class="img-width" id="pessimo" style="display: none;">
+							<img src="img/Ruim.png" alt="" id="ruim" class="img-width" style="display: none;">
+							<img src="img/regular.png" alt="" id="regular" class="img-width" style="display: none;">
+							<img src="img/bom.png" alt="" class="img-width" id="bom" style="display: none;">
+							<img src="img/otimo.png" alt="" class="img-width" id="otimo" style="display: none;">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<label for="txta_tarefa_observacao">Observações</label>
+							<textarea name="txta_tarefa_observacao" id="txta_tarefa_observacao" rows="5"
+								class="form-control"></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<script src="script.js"></script>
+	<script type='text/javascript' src='/webdesk/vcXMLRPC.js'></script>
+</body>
+
+</html>

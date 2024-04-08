@@ -1,0 +1,497 @@
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet"
+			href="/style-guide/css/fluig-style-guide.min.css" />
+		<script type="text/javascript"
+			src="/portal/resources/js/jquery/jquery.js"></script>
+		<script type="text/javascript"
+			src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+		<script type="text/javascript"
+			src="/portal/resources/js/mustache/mustache-min.js"></script>
+		<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js"
+			charset="utf-8"></script>
+
+		<style>
+			#simRH {
+				border-color: green;
+				border-width: 2px;
+				width: 150px;
+				height: auto;
+			}
+
+			#naoRH {
+				border-color: red;
+				border-width: 2px;
+				width: 150px;
+				height: auto;
+			}
+
+			#simGestor {
+				border-color: green;
+				border-width: 2px;
+				width: 150px;
+				height: auto;
+			}
+
+			#naoGestor {
+				border-color: red;
+				border-width: 2px;
+				width: 150px;
+				height: auto;
+			}
+		</style>
+	</head>
+	<body>
+
+		<div class="fluig-style-guide">
+			<form name="form" role="form">
+
+				<input type="hidden" name="aprovaGestor" id="aprovaGestor">
+				<input type="hidden" name="aprovaRH" id="aprovaRH">
+				<input type="hidden" name="matSolicitante" id="matSolicitante">
+				<input type="hidden" name="adicionaGestor" id="adicionaGestor">
+
+				<div class="panel panel-default">
+					<div class="panel-heading" style="background-color: rgb(185, 213, 255);">
+						<h2 class="panel-title"><i
+								class="flaticon flaticon-store-mall-directory icon-xl"
+								aria-hidden="true"></i> Processo de Compras </h2>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="form-group col-md-5">
+								<label for="solicitante">Solicitante</label>
+								<input type="text" name="solicitante" id="solicitante"
+									class="form-control" onblur="buscaSolicitante()" readonly>
+							</div>
+
+							<div class="form-group col-md-3">
+								<label for="dataEmissao">Data da Emissão</label>
+								<input type="text" name="dataEmissao" id="dataEmissao"
+									class="form-control" readonly> <!-- adicionar calendário-->
+							</div>
+
+							<div class="form-group col-md-3">
+								<label for="dataVencimento">Data de Vencimento</label>
+								<input type="text" name="dataVencimento" id="dataVencimento"
+									class="form-control"> <!-- adicionar calendário-->
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="fluig-style-guide">
+					<div class="panel panel-default">
+						<div class="panel-heading" style="background-color: rgb(185, 213, 255);">
+							<h3 class="panel-title"><i class="fluigicon fluigicon-volumes icon-xl"
+									aria-hidden="true"></i> Dados
+								da Solicitação </h3>
+						</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="form-group col-md-3">
+									<label for="filial">Filial</label>
+									<input
+										type="zoom"
+										id="filial"
+										name="filial"
+										class="form-control"
+										data-zoom="{
+												'displayKey':'Filial',
+												'datasetId':'dsFilialSabrina',
+												'placeholder':'Escolha uma filial',
+												'maximumSelectionLength':'1',
+												'fields':[
+													{
+													'field':'IdFilial',
+													'label':'ID'
+													},{
+													'field':'Filial',
+													'label':'Nome',
+													'standard':'true'
+													}
+												]
+											}" />
+								</div>
+
+								<div class="form-group col-md-3">
+									<label for="depto">Depto. Emitente</label>
+									<select name="depto" id="depto" class="form-control">
+										<option value=""></option>
+										<option value="TI">TI</option>
+										<option value="RH">RH</option>
+										<option value="adm">Administracao</option>
+									</select>
+								</div>
+
+								<div class="form-group col-md-3">
+									<label for="filial">Centro de Custo</label>
+									<input
+										type="zoom"
+										id="CentroCusto"
+										name="CentroCusto"
+										class="form-control"
+										data-zoom="{
+												'displayKey':'CentroCusto',
+												'datasetId':'dsCentroCustoSabrinaR',
+												'placeholder':'Escolha um centro de custo',
+												'maximumSelectionLength':'1',
+												'fields':[
+													{
+													'field':'IdCentroCusto',
+													'label':'ID'
+													},{
+													'field':'CentroCusto',
+													'label': 'Nome',
+													'standard':'true'
+													}
+												]
+											}" />
+								</div>
+
+								<div class="form-group col-md-3">
+									<label for="pagamento">Tipo de Pagamento</label>
+									<select name="pagamento" id="pagamento" class="form-control">
+										<option value=""></option>
+										<option value="deposito">Depósito</option>
+										<option value="pix">PIX</option>
+										<option value="transferencia">Transferencia</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="form-group col-md-5">
+									<label for="email">E-mail</label>
+									<input type="email" name="email" id="email" class="form-control">
+								</div>
+
+								<div class="form-group col-md-5">
+									<label for="telefone">Telefone</label>
+									<input type="text" name="telefone" id="telefone" class="form-control"
+										 mask="(00) 00000-0000">
+								</div>
+
+								<div class="form-group col-md-2">
+									<label for="ramal">Ramal</label>
+									<input type="text" name="ramal" id="ramal" class="form-control">
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="form-group col-md-3">
+									<label for="cep">CEP</label>
+									<input type="text" name="cep" id="cep" class="form-control"
+										mask="00000-000" placeholder="00000-000">
+								</div>
+								<div class="form-group col-md-3">
+									<label for="endereco">Endereco</label>
+									<input type="text" name="endereco" id="endereco" class="form-control"
+										readonly>
+								</div>
+								<div class="form-group col-md-3">
+									<label for="cidade">Cidade</label>
+									<input type="text" name="cidade" id="cidade" class="form-control"
+										readonly>
+								</div>
+								<div class="form-group col-md-3">
+									<label for="estado">Estado</label>
+									<input type="text" name="estado" id="estado" class="form-control"
+										readonly>
+								</div>
+							</div>
+						</div>
+
+						<div class="panel-body">
+							<div class="row">
+								<h2>Dados do Favorecido</h2>
+								<div class="form-group col-md-6">
+									<label for="cnpj">CNPJ/CPF</label>
+									<input type="text" name="cnpj" id="cnpj" class="form-control"
+										mask="00.000.000/0000-00">
+								</div>
+								<div class="form-group col-md-6">
+									<label for="razaoSocial">Razão Social/Nome</label>
+									<input type="text" name="razaoSocial" id="razaoSocial"
+										class="form-control" readonly>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="form-group col-md-3">
+									<label for="banco">Banco</label>
+									<input type="text" name="banco" id="banco" class="form-control"
+									mask="000">
+								</div>
+								<div class="form-group col-md-3">
+									<label for="agencia">Agencia</label>
+									<input type="text" name="agencia" id="agencia" class="form-control" mask="0000">
+								</div>
+								<div class="form-group col-md-3">
+									<label for="tipoConta">Tipo de Conta</label>
+									<select name="tipoConta" id="tipoConta" class="form-control">
+										<option value="" placeholder="selecione..."></option>
+										<option value="contaCorrente">Conta Corrente</option>
+										<option value="contaPoupanca">Conta Poupanca</option>
+									</select>
+								</div>
+								<div class="form-group col-md-3">
+									<label for="conta">Conta</label>
+									<input type="text" name="conta" id="conta" class="form-control" mask="0000000000">
+								</div>
+							</div>
+
+							<div class="form-group col-md-12">
+								<label for="informacoes">Observacoes/Historico</label>
+								<textarea rows="5" name="informacoes" id="informacoes"
+									class="form-control"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="fluig-style-guide">
+					<div class="panel panel-default">
+						<div class="panel-heading" style="background-color: rgb(185, 213, 255);">
+							<h3 class="panel-title"><i class="fluigicon fluigicon-library icon-lg"
+									aria-hidden="true"></i> Itens
+								da Solicitação </h3>
+						</div>
+						<div class="panel-body">
+							<table tablename="itensTabela" class="table table-hover" noaddbutton="true" nodeletebutton="true">
+								<thead>
+									<tr>
+										<td class="excluir"></td>
+										<td>Produto</td>
+										<td>Descricao</td>
+										<td>Un. Medida</td>
+										<td>Quant</td>
+										<td>VI. Unit</td>
+										<td>VI. total</td>
+										<td>Necessidade</td>
+										<td>Centro de Custo</td>
+									</tr></thead>
+								<tbody>
+									<tr>
+										<td class="excluir">
+											<button class="btn" onclick="fnWdkRemoveChild(this.parentElement.parentElement)"><i class="flaticon flaticon-trash icon-xl" aria-hidden="true"></i>
+											</button>
+										</td>
+										<td class="form-group col-md-2"><input
+												type="zoom"
+												id="produto"
+												name="produto"
+												data-zoom="{
+												'displayKey':'IdProduto',
+												'datasetId':'dsItensSolicitacaoSabrina',
+												'placeholder':'produto',
+												'maximumSelectionLength':'1',
+												'fields':[
+													{
+													'field':'IdProduto',
+													'label':'ID'
+													},{
+													'field':'Descricao',
+													'label':'Descricao',
+													'standard':'true'
+													}
+												]
+											}" /></td>
+
+										<td class="form-group col-md-2">
+											<input type="text" name="descricao" id="descricao"
+												class="form-control" readonly>
+										</td>
+
+										<td class="form-group col-md-1">
+											<input type="text" name="unMedida" id="unMedida" class="form-control"
+												readonly>
+										</td>
+
+										<td class="form-group col-md-1">
+											<input type="number" name="quantidade" id="quantidade"
+												class="form-control">
+										</td>
+
+										<td class="form-group col-md-1">
+											<input type="text" name="vlUnit" id="vlUnit" class="form-control"
+												readonly>
+										</td>
+
+										<td class="form-group col-md-1">
+											<input type="text" name="vlTotal" id="vlTotal" class="form-control"
+												readonly>
+										</td>
+
+										<td class="form-group col-md-2">
+											<input type="text" name="necessidade" id="necessidade"
+												class="form-control">
+										</td>
+
+										<td class="form-group col-md-2 centro">
+											<input
+												type="zoom"
+												id="CentroCusto2"
+												name="CentroCusto2"
+												class="form-control"
+												data-zoom="{
+												'displayKey':'CentroCusto',
+												'datasetId':'dsCentroCustoSabrinaR',
+												'placeholder':'Escolha um centro de custo',
+												'maximumSelectionLength':'1',
+												'fields':[
+													{
+													'field':'IdCentroCusto',
+													'label':'ID'
+													},{
+													'field':'CentroCusto',
+													'label': 'Nome',
+													'standard':'true'
+													}
+												]
+											}" />
+										</td>
+									</tr>
+								</tbody>
+
+								<button class="btn btn-info" onclick="wdkAddChild('itensTabela')" id="adiciona">Adicionar</button>
+							</table>
+						</div>
+					</div>
+				</div>
+
+				<div class="fluig-style-guide">
+					<div class="panel panel-default">
+						<div class="panel-heading" style="background-color: rgb(185, 213, 255);">
+							<h3 class="panel-title"><i
+									class="fluigicon fluigicon-file-upload icon-lg" aria-hidden="true"></i>
+								Anexos da Solicitação </h3>
+						</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="form-group col-md-4">
+									<label for="numeroNF">Numero de NF</label>
+									<input type="text" name="numeroNF" id="numeroNF" class="form-control"
+										mask="000.000.000">
+								</div>
+
+								<div class="form-group col-md-4">
+									<label for="dataReferencia">Data de Referencia</label>
+									<input type="text" name="dataReferencia" id="dataReferencia"
+										class="form-control">
+								</div>
+
+								<div class="form-group col-md-4">
+									<label for="valorNF">Valor total da NF</label>
+									<input type="text" name="valorNF" id="valorNF" value="valorNF" class="form-control"
+										mask="00.000.000.000.000,00">
+								</div>
+
+								<button class="btn btn-btn nf" id="nf" onclick="upload()">Anexar a
+									NF</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="fluig-style-guide" id="aprovacaoGestor">
+					<div class="panel panel-default">
+						<div class="panel-heading" style="background-color: rgb(185, 213, 255);">
+							<h3 class="panel-title" .fs-text-center><i
+									class="fluigicon fluigicon-user-selection icon-lg"
+									aria-hidden="true"></i>
+								Aprovação - Gestor </h3>
+						</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="form-group col-md-3">
+									<h4>Aprovar pedido?</h4>
+									<button type="button" id="simGestor" class="btn btn-default"
+										onclick="aprovacao1()">SIM</button>
+									<button type="button" id="naoGestor" class="btn btn-default"
+										onclick="aprovacao2()">NÃO</button>
+								</div>
+
+								<div class="form-group col-md-6">
+									<label for="observacoes">Observacoes</label>
+									<textarea rows="5" name="observacoes" id="observacoes"
+										class="form-control"></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="fluig-style-guide" id="aprovacaoRH">
+					<div class="panel panel-default">
+						<div class="panel-heading" style="background-color: rgb(185, 213, 255);">
+							<h3 class="panel-title"><i
+									class="fluigicon fluigicon-user-selection icon-lg"
+									aria-hidden="true"></i>
+								Aprovação - RH </h3>
+						</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="form-group col-md-3">
+									<h4>Aprovar pedido?</h4>
+									<button type="button" id="simRH" class="btn btn-default"
+										onclick="aprovacao1()">SIM</button>
+									<button type="button" id="naoRH" class="btn btn-default"
+										onclick="aprovacao2()">NÃO</button>
+								</div>
+
+								<div class="form-group col-md-6">
+									<label for="observacoes1">Observacoes</label>
+									<textarea rows="5" name="observacoes1" id="observacoes1"
+										class="form-control"></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="fluig-style-guide" id="notificar">
+					<div class="panel panel-default">
+						<div class="panel-heading" style="background-color: rgb(185, 213, 255);">
+							<h3 class="panel-title"><i
+									class="fluigicon fluigicon-user-selection icon-lg"
+									aria-hidden="true"></i>
+								Resultado da Solicitação </h3>
+						</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="form-group col-md-3">
+									<p>A Solicitação foi realizada com sucesso!</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="fluig-style-guide" id="notificarErro">
+					<div class="panel panel-default">
+						<div class="panel-heading" style="background-color: rgb(185, 213, 255);">
+							<h3 class="panel-title"><i
+									class="fluigicon fluigicon-user-selection icon-lg"
+									aria-hidden="true"></i>
+								Resultado da Solicitação </h3>
+						</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="form-group col-md-3">
+									<p>A Solicitação não foi aprovada.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+
+		<script type="text/javascript" src="./cep.js"></script>
+		<script type="text/javascript" src="./cnpj.js"></script>
+		<script type="text/javascript" src="./script.js"></script>
+		<script type='text/javascript' src='/webdesk/vcXMLRPC.js'></script>
+
+	</body>
+</html>

@@ -1,0 +1,235 @@
+/* Coloque aqui seu codigo CSS */
+:root {
+    --green-color: #69cc76;
+    --silver-color: #cecece;
+}
+
+.panel-custom{
+    border: solid 1px #BBBBBB !important;
+    padding: 1vh !important;
+    border-radius: 7px !important;
+    margin-bottom: 15px;
+}
+
+.panel-head-col{
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+}
+
+#buscarCurso {
+    overflow:auto;
+}
+
+hr {
+	border: 0;
+	border-top: 1px solid #094CFA;
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+}
+
+.row{
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+}
+
+.row-custom{
+    display: flex;
+    align-items: center;
+}
+
+.col-center{
+    display: flex;
+    justify-content: center;
+}
+
+.panel-icon{
+    margin-right: 5px;
+}
+
+.div-tipoProduto{
+    display: flex;
+}
+
+.div-tipoProduto button{
+    width: 50%;
+}
+
+.btn-custom{
+    width: 179.5px;
+    height: 31px;
+    padding: 8px, 12px, 8px, 12px;
+    border: 1px solid #828282 !important;
+    font-weight: normal !important;
+    outline: none !important;
+}
+
+.btn-custom-active{
+    background-color: var(--green-color);
+    color: #fff !important;
+}
+
+#btn_uniforme{
+    border-radius: 8px 0px 0px 8px !important;
+}
+
+#btn_epi{
+    border-radius: 0px 8px 8px 0px !important;
+}
+
+.row-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#btn_novoItem{
+    background-color: var(--green-color);
+    color: #ffff;
+    padding: 11px;
+    margin-right: 10px;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.circle {
+    width: 35px; 
+    height: 35px; 
+    border-radius: 50%; 
+    overflow: hidden; 
+    margin: 10px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #41873e;
+    cursor: pointer;
+}
+
+.circles {
+    width: 35px; 
+    height: 35px; 
+    border-radius: 50%; 
+    overflow: hidden; 
+    margin: 10px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #41873e;
+    cursor: pointer;
+}
+  
+.circle img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  color: #ffff;
+}
+
+.circles img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    color: #ffff;
+  }
+
+.div-element-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flaticon-search{
+    cursor: pointer;
+}
+
+.btn-success-custom{
+    border: 1px solid #41873e !important;
+    color: #41873e !important;
+    background-color: #fff !important;
+    border-radius: 10px;
+    width: 150px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold !important;
+}
+
+.btn-success-custom img{
+    margin-right: 7px;
+}
+
+.row-elements{
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+}
+
+table, tr, td {
+    border: 0px !important; 
+}
+
+.td-head{
+    box-shadow: 0px 8px 16px 2px #3039521A !important;
+}
+
+.btn_trash{
+    color: #cc605a;
+    cursor: pointer;
+}
+
+.btn_edit{
+    color: #efc38a;
+    cursor: pointer;
+}
+
+.td-close{
+    border-radius: 8px !important;
+    background: none;
+}
+
+.td-open{
+    border-radius: 5px 5px 0px 0px !important;
+    background: linear-gradient(to bottom, #e9fae8 90px, transparent 5px);
+}
+
+#tbProdutos tr:hover{
+    background: none !important;
+}
+
+.filtros p{
+    text-decoration: underline;
+    color: var(--green-color);
+    cursor: pointer;
+}
+
+#close_filtros{
+    cursor: pointer !important;
+}
+
+#filtros{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 600px;
+    width: 100%;
+    z-index: 1000;
+    background-color: #fff;
+}
+
+.fluig-style-guide .panel-group .panel-heading .collapse-icon:before {
+    background-color: transparent !important;
+}
+
+.collapse-icon[aria-expanded="true"] {
+    background-color:#F5E4FF !important;
+}
+
+.collapse-icon[aria-expanded="false"] {
+    background-color: white !important;
+}

@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+.fluig-style-guide{
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.panel-heading{
+    border: 1px solid #46C243 !important;
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%) !important;
+    border-radius: 8px !important;
+    height: 60px !important;
+    display: flex !important;
+    align-items: center !important;
+    color: #46C243 !important;
+    font-size: 1.4rem !important;
+}
+.panel-heading .panel-title{
+    display: flex !important;
+    align-items: center !important;
+    font-style: 20px !important;
+}
+.panel-heading .panel-title i {
+    margin-right: 20px;
+}
+.progress{
+    border-radius: 14px !important;
+}
+
+#tbAnexos tbody tr{
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+#tbAnexos tbody tr td{
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.div-fotoUser{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.div-fotoUser img{
+    border-radius: 50%;
+    width: 77px;
+    height: 77px;
+}
+
+.div_nomeUser{
+    font-size: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.div_nomeUser .roleName{
+    transform: translateY(-10px);
+}
+
+.btnAprovacao .btn{
+    width: 150px !important;
+}
+
+table td{
+    vertical-align: middle !important;
+}
+.bpm-mobile-trash-column{
+    width: 100px !important;
+}
+.btnAnexo{
+    height: 34px !important;
+    padding: 6px 12px !important;
+    background-color: #EB8424;
+    color: #fff !important;
+    font-weight: 600 !important;
+    border: none;
+    border-radius: 4px;
+}
+.btnRemoveAnexo{
+    height: 34px !important;
+    padding: 6px 12px !important;
+    background-color: #eb3b24;
+    color: #fff !important;
+    font-weight: 600 !important;
+    border: none;
+    border-radius: 4px;
+}
+.btnDownloadAnexo{
+    height: 34px !important;
+    padding: 6px 12px !important;
+    background-color: #2495eb;
+    color: #fff !important;
+    font-weight: 600 !important;
+    border: none;
+    border-radius: 4px;
+}
+.btnAnexoGerente{
+    height: 34px !important;
+    padding: 6px 12px !important;
+    background-color: #EB8424;
+    color: #fff !important;
+    font-weight: 600 !important;
+    border: none;
+    border-radius: 4px;
+}
+.btnRemoveAnexoGerente{
+    height: 34px !important;
+    padding: 6px 12px !important;
+    background-color: #eb3b24;
+    color: #fff !important;
+    font-weight: 600 !important;
+    border: none;
+    border-radius: 4px;
+}
+.btnDownloadAnexoGerente{
+    height: 34px !important;
+    padding: 6px 12px !important;
+    background-color: #2495eb;
+    color: #fff !important;
+    font-weight: 600 !important;
+    border: none;
+    border-radius: 4px;
+}

@@ -1,0 +1,17 @@
+application.type=layout
+application.code=cadastro_curso_mfx_academy
+application.title=cadastro_curso_mfx_academy
+application.description=cadastro_curso_mfx_academy
+application.category=SYSTEM
+application.renderer=freemarker
+developer.code=DESKTOP-AC7AQM0
+developer.name=Lenovo
+developer.url=http://www.fluig.com
+layout.defaultSlot=SlotA
+layout.file=layout.ftl
+locale.file.base.name=cadastro_curso_mfx_academy
+slot.SlotGlobalAlert=alertpopover
+slot.SlotInstantSearch=suggestsearch
+slot.SlotLogin=sociallogin
+slot.SlotMenu=menu
+slot.SlotUsePolicy=usepolicy

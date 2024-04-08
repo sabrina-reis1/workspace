@@ -1,0 +1,76 @@
+<html>
+
+<head>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css" />
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+
+	<style>
+		.panel-custom {
+			border: solid 1px #BBBBBB !important;
+			padding: 1vh !important;
+			border-radius: 7px !important;
+			margin-bottom: 15px;
+		}
+
+		.panel-head-col {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="fluig-style-guide">
+		<form name="form" role="form">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h2 class="panel-title"><img src="/cadastro_curso_mfx_academy/resources/images/cadastro.png" alt="Cadastro"
+						class="panel-icon"> Cadastro de Turma </h2>
+				</div>
+				<div class="panel-body">
+					<div class="card">
+						<div class="card-body"
+							style="position: relative; border-radius: 10px; box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;">
+							<div class='row'>
+								<div class='col-md-5'>
+									<label for='nomeTurma'>Nome da turma</label>
+									<input type='text' class='form-control' id='nomeTurma' name='nomeTurma' />
+									<input type="hidden" class="idCurso" id="idCurso" name="idCurso">
+								</div>
+								<div class='col-md-3'>
+									<label for='horarioAulaInicio'>Horário de início</label>
+									<input type='time' class='form-control' id='horarioAulaInicio'
+										name='horarioAulaInicio' readonly/>
+								</div>
+								<div class='col-md-3'>
+									<label for='horarioAulaFim'>Horário de Encerramento</label>
+									<input type='time' class='form-control' id='horarioAulaFim' name='horarioAulaFim' />
+								</div>
+							</div>
+							<div class='row'>
+								<div class='col-md-5'>
+									<label for='dataInicio'>Data de início</label>
+									<input type='date' class='form-control' id='dataInicio' name='dataInicio' />
+								</div>
+								<div class='col-md-5'>
+									<label for='dataTermino'>Data de término</label>
+									<input type='date' class='form-control' id='dataTermino' name='dataTermino' />
+								</div>
+								<div class='col-md-1'>
+									<label for='idTurma'>ID Turma</label>
+									<input type='text' class='form-control' id='idTurma' name='idTurma' />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+
+</html>
